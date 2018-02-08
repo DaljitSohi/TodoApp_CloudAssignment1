@@ -3,6 +3,7 @@
 const express = require('express'); //Express for Routing
 const bodyParser = require('body-parser'); //Handling HTTP Requests
 const mongoose = require('mongoose'); //Handling MondoDB
+var port = process.env.PORT || 3001;
 
 //Connecting to DataBase
 mongoose.connect('mongodb://todolist:assignment1@ds155934.mlab.com:55934/todo_list');
@@ -45,9 +46,8 @@ app.delete('/list', urlencodedParser, function(req, res){
     if(err) throw err;
     res.json(data);
   });
-  // console.log(req.body);
 });//Handle Delete Command
 
 //app is listening on port 3001. Address -> localhost:3001
-app.listen(3001);
-console.log('Listening on port 3001...........');
+app.listen(port);
+console.log('Now listening on port 3001...........');
